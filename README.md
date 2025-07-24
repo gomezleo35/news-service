@@ -40,7 +40,7 @@ DATABASE_URL=postgres://postgres:postgres@db:5432/noticias
 ## Levantar el entorno
 
 ```bash
-docker compose up --build
+sudo docker compose up --build
 ```
 
 Esto levanta:
