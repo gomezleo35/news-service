@@ -40,7 +40,7 @@ DATABASE_URL=postgres://postgres:postgres@db:5432/noticias
 ## Levantar el entorno
 
 ```bash
-sudo docker compose up --build
+sudo docker compose up --build -d
 ```
 
 Esto levanta:
@@ -164,4 +164,9 @@ npx prisma generate
 
 ```bash
 npx prisma migrate reset
+```
+- Detener orquestador (docker-compose)
+
+```bash
+docker compose down
 ```
