@@ -26,7 +26,7 @@ describe("Resolvers", () => {
     ];
     mockPrisma.article.findMany.mockResolvedValue(mockArticles);
 
-    const result = await resolvers.Query.allArticle();
+    const result = await resolvers.Query.allArticles();
     expect(result).toEqual(mockArticles);
     expect(mockPrisma.article.findMany).toHaveBeenCalled();
   });
