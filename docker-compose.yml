@@ -22,7 +22,8 @@ services:
       DATABASE_URL: postgres://postgres:postgres@db:5432/noticias
     depends_on:
       - db
-    command: ["npx", "ts-node-dev", "--respawn", "src/index.ts"]
+    command: >
+      sh -c "npm install && npm test && npx ts-node-dev --respawn src/index.ts"
     volumes:
       - .:/usr/src/app
 
