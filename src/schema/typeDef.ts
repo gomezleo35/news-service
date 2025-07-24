@@ -11,9 +11,9 @@ export const typeDefs = gql`
   }
 
   type Query {
-    allArticle: [Article!]!
-    Article(id: Int!): Article
-    searchArticle(keyword: String!): [Article!]!
+    allArticles: [Article!]!
+    article(id: Int!): Article
+    searchArticles(keyword: String!): [Article!]!
   }
 
   type Mutation {

@@ -3,15 +3,15 @@ import { CreateArticleArgs, DeleteArticleArgs, ArticleArgs, SearchArgs, UpdateAr
 
 export const getResolvers =  (prisma: PrismaClient) => ({
   Query: {
-    allArticle: async (): Promise<Article[]> => {
+    allArticles: async (): Promise<Article[]> => {
       return prisma.article.findMany();
     },
 
-    Article: async (_: unknown, args: ArticleArgs): Promise<Article | null> => {
+    article: async (_: unknown, args: ArticleArgs): Promise<Article | null> => {
       return prisma.article.findUnique({ where: { id: args.id } });
     },
 
-    searchArticle: async (_: unknown, args: SearchArgs): Promise<Article[]> => {
+    searchArticles: async (_: unknown, args: SearchArgs): Promise<Article[]> => {
       return prisma.article.findMany({
         where: {
           OR: [
