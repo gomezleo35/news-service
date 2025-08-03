@@ -55,92 +55,60 @@ Esto levanta:
 Una vez que los contenedores están corriendo:
 
 ```bash
-docker compose exec api npx prisma migrate dev --name init
+sudo docker compose exec api npx prisma migrate dev --name init
 ```
 
 Esto crea la tabla `Article`.
 
 ---
 
-## Acceder a la API
-
-Ir al Playground:
-
-```
-http://localhost:4000/graphql
-```
-
----
-
-## Probar la API desde Postman
-
-Seleccioná POST como método.
-
-Usá esta URL:
-
-http://localhost:4000/graphql
-
-En la pestaña Body, elegí raw y luego seleccioná JSON.
-
-## Ejemplos de queries y mutations
+## Endpoints disponibles
 
 ### Obtener todos los artículos
 
-```json
-{
-  "query": "query { allArticles { id title body imageUrl author date } }"
-}
-```
-
----
+**GET** `/articles`
 
 ### Obtener un artículo por ID
 
-```json
-{
-  "query": "query { article(id: 1) { id title body imageUrl author date } }"
-}
-```
-
----
+**GET** `/articles/:id`
 
 ### Buscar artículos por palabra clave
 
-```json
-{
-  "query": "query { searchArticles(keyword: \"someText\") { id title author } }"
-}
-```
-
----
+**GET** `/articles/search/:keyword`
 
 ### Crear un artículo
 
+**POST** `/articles`
+
+Body esperado (JSON):
+
 ```json
 {
-  "query": "mutation { createArticle(title: \"Nueva noticia\", body: \"Este es el contenido.\", imageUrl: \"https://ejemplo.com/image.jpg\", author: \"Juan\") { id title } }"
+  "title": "Nueva noticia",
+  "body": "Contenido completo",
+  "imageUrl": "https://example.com/img.jpg",
+  "author": "Leito"
 }
 ```
-
----
 
 ### Actualizar un artículo
 
+**PUT** `/articles/:id`
+
+Body esperado (JSON):
+
 ```json
 {
-  "query": "mutation { updateArticle(id: 1, title: \"Artículo actualizado\", body: \"Nuevo contenido\") { id title body } }"
+  "title": "Título actualizado",
+  "body": "Nuevo contenido",
+  "imageUrl": "https://example.com/nueva-img.jpg",
+  "author": "Actualizado"
 }
 ```
-
----
 
 ### Eliminar un artículo
 
-```json
-{
-  "query": "mutation { deleteArticle(id: 1) { id title } }"
-}
-```
+**DELETE** `/articles/:id`
 
 ---
 
